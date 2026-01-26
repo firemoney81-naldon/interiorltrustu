@@ -1,23 +1,329 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+  <!-- Schema.org LocalBusiness 마크업(JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "영통 리모델링 전문 서비스",
+    "image": "https://도메인/영통리모델링로고.png",
+    "url": "https://도메인/영통리모델링",
+    "telephone": "031-123-4567",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "경기도 수원시 영통구 ○○로 ○○",
+      "addressLocality": "수원시 영통구",
+      "addressRegion": "경기",
+      "postalCode": "16700",
+      "addressCountry": "KR"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "영통구"
+    },
+    "priceRange": "₩₩₩",
+    "description": "수원 영통구 아파트 및 주택 리모델링 전문. 최신 견적, 업체 비교, 장단점 분석 등 모든 정보를 한 곳에서 확인하세요."
+  }
+  </script>
+
+  <!-- Google Fonts: Noto Sans KR -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap">
+
+  <style>
+    /* 기본 스타일 재설정 및 부드러운 색감 적용 */
+    body { font-family: 'Noto Sans KR', sans-serif; margin:0; padding:0; background:#f4f7fa; color:#333; line-height:1.8; font-size:16px; }
+    header { background:#ffffff; padding:40px 20px; text-align:center; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+    section { max-width:900px; margin:20px auto; padding:30px; background:#ffffff; border-radius:16px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+    footer { text-align:center; padding:20px; font-size:0.9rem; color:#666; }
+
+    /* 헤더 및 제목 스타일 (명확한 시각적 계층 구조) */
+    h1 { font-size:2.8rem; color:#0b3d91; margin-bottom:10px; font-weight:700; }
+    h2 { font-size:2.2rem; color:#0b3d91; margin-top:30px; margin-bottom:15px; border-left:6px solid #4285f4; padding-left:15px; font-weight:700; }
+    h3 { font-size:1.6rem; color:#3c3c3c; margin-top:25px; margin-bottom:10px; border-bottom:2px solid #e0e0e0; padding-bottom:5px; font-weight:700; }
+    p, li { font-size:1rem; line-height:1.7; color:#444; }
+
+    /* 링크 및 버튼 스타일 */
+    a { color:#4285f4; text-decoration:none; transition:color 0.3s; }
+    a:hover { text-decoration:underline; color:#3367d6; }
+    .btn-cta {
+      display:inline-block;
+      padding:16px 35px;
+      background:#4285f4;
+      color:#fff;
+      font-weight:700;
+      border:none;
+      border-radius:30px;
+      box-shadow:0 6px 12px rgba(66, 133, 244, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+      text-align:center;
+      font-size:1.1rem;
+      margin-top:20px;
+    }
+    .btn-cta:hover { background:#3367d6; transform:translateY(-2px); box-shadow:0 8px 16px rgba(66, 133, 244, 0.5); }
+
+    /* 테이블 스타일 (정보 전문성 강조) */
+    table { width:100%; border-collapse: separate; border-spacing: 0; margin:25px 0; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+    th, td { padding:14px; text-align:left; border-bottom:1px solid #eef1f5; }
+    th { background:#eef1f5; color:#0b3d91; font-weight:700; font-size:1.05rem; }
+    tr:nth-child(even) { background-color: #fcfcfc; }
+
+    /* 목록 스타일 (가독성 향상) */
+    ul { list-style-type: none; padding-left:0; }
+    li { position:relative; padding-left:25px; margin-bottom:10px; }
+    li::before { content: "\2022"; color:#4285f4; font-weight:bold; display:inline-block; width:1em; margin-left:-1em; }
+
+    /* FAQ 및 폼 스타일 */
+    dl dt { font-weight:700; margin-top:15px; color:#0b3d91; font-size:1.1rem; }
+    dl dd { margin-left:20px; padding-bottom:10px; border-bottom:1px dotted #e0e0e0; }
+    form { background:#f9f9f9; padding:25px; border-radius:10px; }
+    label { display:block; margin-top:10px; font-weight:700; color:#3c3c3c; }
+    input[type="text"], input[type="tel"], input[type="email"], select, textarea { width:calc(100% - 24px); padding:12px; margin-top:5px; margin-bottom:15px; border:1px solid #ccc; border-radius:8px; box-sizing:border-box; font-size:1rem; }
+    textarea { resize:vertical; }
+
+    /* 반응형 디자인 */
+    @media(max-width:768px) {
+      body { padding:10px; }
+      h1 { font-size:2rem; }
+      h2 { font-size:1.8rem; }
+      section { padding:20px; margin:10px auto; }
+      .btn-cta { width:100%; box-sizing:border-box; font-size:1rem; padding:14px 0; }
+      input[type="text"], input[type="tel"], input[type="email"], select, textarea { width:calc(100% - 16px); }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>영통 리모델링: 2026년 최신 비용, 견적, 추천 업체 완벽 가이드</h1>
+    <p>수원 영통구 아파트 및 주택 인테리어, 부분 리모델링부터 토탈 올수리까지 전문가가 도와드립니다.</p>
+    <a class="btn-cta" href="#contact">지금 바로 무료 견적 상담 신청하기</a>
+  </header>
+
+  <nav aria-label="페이지 내 이동">
+    <section>
+      <ul style="display:flex; justify-content:space-around; list-style-type:none; padding:0; background:#f0f4f8; border-radius:10px; overflow:hidden;">
+        <li style="flex-grow:1; text-align:center;"><a href="#intro" style="display:block; padding:15px; font-weight:700; color:#333;">영통 리모델링 개요</a></li>
+        <li style="flex-grow:1; text-align:center;"><a href="#cost" style="display:block; padding:15px; font-weight:700; color:#333;">2026년 예상 비용</a></li>
+        <li style="flex-grow:1; text-align:center;"><a href="#comparison" style="display:block; padding:15px; font-weight:700; color:#333;">업체 선정 기준</a></li>
+        <li style="flex-grow:1; text-align:center;"><a href="#checklist" style="display:block; padding:15px; font-weight:700; color:#333;">필수 체크리스트</a></li>
+        <li style="flex-grow:1; text-align:center;"><a href="#faq" style="display:block; padding:15px; font-weight:700; color:#333;">FAQ</a></li>
+      </ul>
+    </section>
+  </nav>
+
+  <section id="intro">
+    <h2 id="section-intro">영통 리모델링: 왜 지금이 적기인가?</h2>
+    <p>수원 영통구는 1990년대 말부터 2000년대 초반에 조성된 아파트 단지가 많아 리모델링 수요가 매우 높습니다. 단순히 낡은 부분을 고치는 것을 넘어, 거주자의 라이프스타일에 맞춘 공간 변화를 통해 주거 만족도를 높이는 것이 최근 영통 인테리어 트렌드입니다. 특히 2026년에는 건축 자재비 및 인건비 상승으로 인해 리모델링 가격이 지속적으로 오를 것으로 예상되므로, 미리 준비하는 것이 중요합니다.</p>
+    <p>영통 리모델링은 단순한 주거 환경 개선을 넘어, 부동산 가치를 상승시키는 투자적 측면도 갖습니다. 영통 지역은 학군과 교통이 우수하여 인구 유입이 꾸준하지만, 노후 아파트의 경우 신축 아파트 대비 경쟁력이 떨어질 수 있습니다. 효과적인 리모델링은 이러한 단점을 보완하고, 매매나 전세 거래 시 우위를 점할 수 있는 핵심 요소입니다.</p>
+
+    <h3>영통구 리모델링 수요가 높은 주요 지역 (키워드 삽입)</h3>
+    <p>영통구 내에서도 리모델링 수요가 특히 높은 지역은 다음과 같습니다. 해당 지역의 아파트는 건축 연령이 20년 이상인 경우가 많아, 전체적인 올수리 및 부분 리모델링이 활발하게 이루어지고 있습니다.</p>
+    <ul>
+      <li><strong>영통동:</strong> 신나무실 주공, 황골주공, 벽적골 주공, 영통롯데캐슬, 영통빌라 단지 등</li>
+      <li><strong>매탄동:</strong> 매탄주공 1~12단지, 매탄위브하늘채, 삼성전자 인근 주택</li>
+      <li><strong>망포동:</strong> 망포마을 1~5단지, 영통자이 아파트, 망포힐스테이트</li>
+      <li><strong>하동:</strong> 광교신도시 인근 주거 단지 (부분 리모델링 수요)</li>
+    </ul>
+
+    <h3>토탈 리모델링 vs 부분 리모델링: 장단점 비교</h3>
+    <p>리모델링을 시작하기 전, 집 전체를 고칠지(토탈) 아니면 필요한 부분만 고칠지(부분) 결정해야 합니다. 이는 영통 리모델링 비용과 직결되는 문제입니다.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>토탈 리모델링 (올수리)</th>
+          <th>부분 리모델링</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>범위</strong></td>
+          <td>내부 전체 (철거, 창호, 주방, 욕실, 바닥, 도배 등)</td>
+          <td>주방, 욕실, 베란다 등 특정 공간이나 공정만 진행</td>
+        </tr>
+        <tr>
+          <td><strong>장점</strong></td>
+          <td>완벽한 새 집 분위기 구현, 높은 가치 상승, 통일된 디자인</td>
+          <td>저렴한 가격, 짧은 공사 기간, 거주 중 시공 가능, 싼곳 찾기 용이</td>
+        </tr>
+        <tr>
+          <td><strong>단점</strong></td>
+          <td>높은 비용, 긴 공사 기간 (1~3주 이상), 짐 보관 필수, 싼곳 찾기 어려움</td>
+          <td>전체적인 통일성 부족, 가치 상승 폭 제한적</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="cost">
+    <h2 id="section-cost">2026년 영통 리모델링 예상 비용 및 견적 분석</h2>
+    <p>영통 리모델링 비용은 단순히 평당 가격으로 계산하기 어렵습니다. 짐의 양, 시공 범위, 자재 등급, 철거 유무, 공사 기간 등 수많은 변수에 따라 견적이 달라집니다. 특히 2026년도에는 인건비와 자재비가 상승하여 2025년 대비 평균 10~15% 정도 비용 상승이 예상됩니다.</p>
+    <p>리모델링 견적을 산출할 때 핵심은 ‘자재 등급’입니다. 인테리어 자재에는 마루, 타일, 벽지, 도기 등 다양한 종류가 있으며, 어떤 등급을 선택하느냐에 따라 총 가격이 크게 달라집니다. 예를 들어, 영통 아파트 20평대 리모델링 시에도 일반 자재를 쓰느냐 고급 자재를 쓰느냐에 따라 견적 차이가 300~500만 원 이상 발생할 수 있습니다. 저렴한 곳을 찾으려면 자재 등급을 신중하게 선택해야 합니다.</p>
+
+    <h3>평형별 영통 아파트 리모델링 예상 비용 (2026년 기준)</h3>
+    <p>다음은 영통 지역의 아파트 평형별 일반적인 토탈 리모델링(올수리) 예상 비용입니다. (자재 등급 중간 기준, 철거 및 부대 비용 포함)</p>
+    <table>
+      <thead>
+        <tr>
+          <th>평형</th>
+          <th>시공 범위</th>
+          <th>평균 예상 금액 (2026년)</th>
+          <th>참고 사항</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>20평대 (25평 기준)</strong></td>
+          <td>방 2~3개, 욕실 1~2개, 거실, 주방</td>
+          <td>1,800만원 ~ 2,500만원</td>
+          <td>단열 보강, 확장 공사 시 추가 비용 발생</td>
+        </tr>
+        <tr>
+          <td><strong>30평대 (34평 기준)</strong></td>
+          <td>방 3개, 욕실 2개, 거실, 주방</td>
+          <td>2,500만원 ~ 3,500만원</td>
+          <td>가장 일반적인 영통 아파트 평형대, 욕실 2개 기준</td>
+        </tr>
+        <tr>
+          <td><strong>40평대 이상</strong></td>
+          <td>방 4개 이상, 욕실 2개, 넓은 거실 및 주방</td>
+          <td>3,500만원 ~ 5,000만원 이상</td>
+          <td>고급 자재, 특수 디자인 요청 시 비용 증가 폭 큼</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>리모델링 비용 절감 팁: 싼곳 찾는 방법</h3>
+    <ol>
+      <li><strong>자재 등급 조정:</strong> 눈에 잘 띄지 않는 부분(예: 안방 욕실 타일)은 저렴한 자재를 사용하고, 거실이나 주방 등 핵심 공간에만 고급 자재를 사용하여 비용을 절감합니다.</li>
+      <li><strong>부분 리모델링 활용:</strong> 전체 올수리가 부담스럽다면, 주방이나 욕실만 부분 리모델링하는 것을 고려합니다. 특히 영통구 내 오래된 아파트의 경우, 샷시 교체만으로도 단열 효과와 비용 절감 효과를 볼 수 있습니다.</li>
+      <li><strong>비교 견적 필수:</strong> 영통 인테리어 업체 3~5곳으로부터 견적을 받아 비교합니다. 이때, 견적서의 세부 항목(인건비, 자재비, 부가세)을 꼼꼼히 확인하여 과도한 견적을 피하고 저렴한 곳을 찾습니다.</li>
+    </ol>
+    <p>수많은 영통 리모델링 업체 중 내돈내산 후기가 좋은 곳을 선택하는 것이 중요합니다. 단순히 가격이 싼곳보다는 합리적인 가격에 충분한 품질을 보장하는 곳을 선택해야 장기적인 만족도가 높습니다.</p>
+  </section>
+
+  <section id="comparison">
+    <h2 id="section-comparison">영통 인테리어 업체 순위 비교 및 추천 기준</h2>
+    <p>영통 리모델링 시장은 경쟁이 치열하여 수많은 업체가 존재합니다. 따라서 신뢰할 수 있는 업체를 선정하는 것이 성공적인 리모델링의 80%를 차지합니다. 영통 인테리어 업체 순위를 정할 때 단순히 광고만 보고 판단하기보다는, 다음의 기준을 바탕으로 비교하는 것이 좋습니다.</p>
+
+    <h3>1. 전문성과 경험: 영통 지역 특화 업체인가?</h3>
+    <p>영통구 아파트들은 특정 구조나 평면이 반복되는 경우가 많습니다. 영통 지역의 아파트 구조에 대한 이해도가 높은 업체는 공사 중 발생할 수 있는 문제점을 사전에 파악하고 효율적으로 해결할 수 있습니다. 예를 들어, 오래된 벽적골 아파트의 경우 샷시(창호) 교체 시 단열 문제를 해결하는 노하우가 중요합니다. 이러한 부분에서 전문성을 갖춘 업체가 추천 대상입니다.</p>
+
+    <h3>2. 계약 및 보증: A/S 보증 기간 및 범위</h3>
+    <p>리모델링은 공사 완료 후에도 하자가 발생할 수 있습니다. 영통 인테리어 업체를 선정할 때는 반드시 계약서에 A/S 기간과 범위를 명시해야 합니다. 보통 1년의 무상 A/S 기간을 제공하지만, 싼곳을 찾다 보면 A/S가 제대로 이루어지지 않는 경우가 있습니다. 투명한 계약서와 확실한 사후 관리가 가능한 업체를 선택하는 것이 내돈내산 후기에서도 중요하게 언급됩니다.</p>
+
+    <h3>3. 디자인 및 소통 능력: 원하는 스타일 구현</h3>
+    <p>리모델링은 단순히 낡은 것을 교체하는 것을 넘어, 거주자의 만족도를 높이는 디자인을 구현해야 합니다. 영통 인테리어 업체와 충분한 소통을 통해 원하는 스타일(미니멀리즘, 북유럽 스타일, 모던 스타일 등)을 명확히 전달하고, 이를 구현할 수 있는 포트폴리오를 확인해야 합니다. 포트폴리오를 통해 해당 업체의 디자인 감각을 미리 확인할 수 있습니다.</p>
+
+    <h3>4. 고객 만족도 및 내돈내산 후기</h3>
+    <p>영통 인테리어 업체 순위 비교 시 가장 신뢰할 수 있는 정보는 실제 고객들의 내돈내산 후기입니다. 블로그, 카페, SNS 등 다양한 채널에서 해당 업체의 후기를 확인합니다. 다만, 광고성 후기와 실제 후기를 구분하는 것이 중요하며, 부정적인 후기가 있더라도 업체가 어떻게 대응했는지 확인하는 것도 중요합니다.</p>
+    <p><strong>함께 많이 찾는 키워드:</strong> 영통 인테리어 잘하는 곳, 수원 리모델링 업체 순위, 영통 아파트 20평대 리모델링 비용, 망포동 인테리어, 영통 리모델링 후기, 내돈내산 추천.</p>
+  </section>
+
+  <section id="checklist">
+    <h2 id="section-checklist">성공적인 영통 리모델링을 위한 필수 체크리스트 (2026년)</h2>
+    <p>리모델링 공사 전 꼼꼼한 준비는 공사 기간 단축과 비용 절감의 핵심입니다. 특히 영통구 아파트의 경우 이웃 주민과의 소음 문제, 엘리베이터 사용 협의 등 신경 써야 할 부분이 많습니다.</p>
+
+    <h3>공사 전 준비 사항</h3>
+    <ol>
+      <li><strong>짐 보관 계획 수립:</strong> 토탈 리모델링 시 짐을 보관할 공간을 확보해야 합니다. 보통 이사 업체와 연계하여 보관이사 서비스를 이용하거나, 공사 기간 동안 임시 거주지를 마련해야 합니다. (원룸, 오피스텔 단기 임차 등)</li>
+      <li><strong>관리사무소 및 이웃 협의:</strong> 영통 아파트 단지의 경우 관리사무소에 리모델링 신고를 하고, 공사 기간 동안 소음 발생에 대한 양해를 구하는 동의서를 받아야 합니다. 엘리베이터 사용료 납부 및 이용 시간 협의도 필수입니다.</li>
+      <li><strong>정확한 실측:</strong> 계약 전 반드시 전문가와 함께 현장을 방문하여 실측을 진행해야 합니다. 실측을 통해 정확한 견적을 산출하고, 공사 중 추가 비용이 발생하는 것을 방지할 수 있습니다.</li>
+      <li><strong>가구 및 가전 배치 계획:</strong> 리모델링 후 가구 배치를 미리 시뮬레이션하여 콘센트 위치, 조명 위치 등을 사전에 계획합니다. 특히 주방 가전(냉장고, 식기세척기 등)의 빌트인 여부를 결정해야 합니다.</li>
+    </ol>
+
+    <h3>공사 중 필수 확인 사항</h3>
+    <ol>
+      <li><strong>일일 진행 상황 확인:</strong> 공사 기간 동안 매일 현장을 방문하여 진행 상황을 확인하고, 문제가 발견되면 즉시 업체와 소통하여 수정해야 합니다.</li>
+      <li><strong>수도 및 전기 배선 점검:</strong> 욕실 및 주방 리모델링 시 수도 배관 및 전기 배선 공사가 이루어집니다. 이 부분이 향후 하자 발생 위험이 높으므로, 반드시 전문가와 함께 꼼꼼히 점검해야 합니다.</li>
+      <li><strong>폐기물 처리:</strong> 철거 폐기물 처리 과정이 불투명할 경우 추가 비용이 발생할 수 있습니다. 폐기물 처리 방식을 명확히 계약서에 포함하고, 현장에서도 폐기물이 적절하게 처리되는지 확인해야 합니다.</li>
+    </ol>
+    <a class="btn-cta" href="#contact">리모델링 전문가와 1:1 상담하기</a>
+  </section>
+
+  <section id="faq">
+    <h2 id="section-faq">영통 리모델링 자주 묻는 질문 (FAQ)</h2>
+    <dl>
+      <dt>Q1: 영통 리모델링 공사 기간은 얼마나 걸리나요?</dt>
+      <dd>A: 토탈 리모델링(올수리)의 경우 평균적으로 2주에서 3주 정도 소요됩니다. 부분 리모델링은 1~2일에서 길게는 1주일 정도 소요될 수 있습니다. 공사 범위, 아파트 규모, 날씨(특히 겨울철) 등에 따라 변동될 수 있습니다.</dd>
+      <dt>Q2: 리모델링 견적을 받을 때 '추가 비용'이 발생할 수 있나요?</dt>
+      <dd>A: 네, 계약서 외 추가 비용이 발생하는 경우가 많습니다. 특히 샷시 교체 시 단열재 보강, 베란다 확장 시 보일러 배관 연장, 예상치 못한 철거 문제 등이 발생하면 추가 비용이 발생할 수 있습니다. 꼼꼼한 사전 실측과 견적 비교를 통해 최소화해야 합니다.</dd>
+      <dt>Q3: 2026년 리모델링 시 정부 지원 혜택이 있나요?</dt>
+      <dd>A: 정부 차원에서 특정 지역이나 특정 조건(예: 에너지 효율 개선)에 한해 지원 사업이 있을 수 있습니다. 국토교통부나 지방자치단체(수원시청)의 공고를 확인하는 것이 좋습니다. 또한, 에너지 효율을 높이는 창호 교체 등은 취득세 감면 혜택을 받을 수 있는 경우도 있습니다.</dd>
+      <dt>Q4: 영통구 아파트 리모델링 시 꼭 확인해야 할 법규는 무엇인가요?</dt>
+      <dd>A: 리모델링 시에는 소방법, 주차장법, 건축법 등을 준수해야 합니다. 특히 내력벽 철거나 증축에 해당하는 리모델링은 관할 관청의 허가가 필요합니다. 영통 인테리어 업체가 이러한 법규를 정확히 알고 있는지 확인해야 합니다.</dd>
+      <dt>Q5: 리모델링 후 AS 보장은 어떻게 되나요?</dt>
+      <dd>A: 일반적으로 인테리어 공사의 A/S 기간은 1년입니다. 계약서에 명시된 기간 동안 하자가 발생하면 무상으로 보수받을 수 있습니다. 영통 지역 내에서도 A/S 기간이 길고 확실한 업체를 선택하는 것이 좋습니다.</dd>
+    </dl>
+  </section>
+
+  <section id="contact">
+    <h2 id="section-contact">영통 리모델링 무료 견적 상담 신청</h2>
+    <p>수원 영통구 아파트, 주택 리모델링에 대한 상세 견적과 궁금증을 해결해 드립니다. 2026년 최신 가격 정보를 바탕으로 합리적인 계획을 세우세요. 아래 양식을 작성해 주시면 전문 컨설턴트가 연락드립니다.</p>
+    <form action="/submit" method="POST">
+      <h3>1. 고객 기본 정보</h3>
+      <label for="name">이름<span style="color:red;">*</span></label>
+      <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+
+      <label for="phone">연락처<span style="color:red;">*</span></label>
+      <input type="tel" id="phone" name="phone" required placeholder="010-1234-5678" pattern="[0-9\-]+">
+
+      <label for="email">이메일 주소</label>
+      <input type="email" id="email" name="email" placeholder="help@domain.com">
+
+      <h3>2. 리모델링 상세 요청 사항</h3>
+      <label for="area">이사할 지역 (영통구 내 동/마을)<span style="color:red;">*</span></label>
+      <input type="text" id="area" name="area" required placeholder="예: 영통동 황골마을, 매탄동 위브하늘채">
+
+      <label for="property-type">주거 형태<span style="color:red;">*</span></label>
+      <select id="property-type" name="property_type" required>
+        <option value="">선택하세요</option>
+        <option value="아파트">아파트</option>
+        <option value="주택/빌라">주택/빌라</option>
+        <option value="상업 공간">상업 공간 (사무실/상가)</option>
+      </select>
+
+      <label for="size">평형대</label>
+      <select id="size" name="size">
+        <option value="">선택하세요</option>
+        <option value="20평대 미만">20평대 미만</option>
+        <option value="20평대">20평대</option>
+        <option value="30평대">30평대</option>
+        <option value="40평대 이상">40평대 이상</option>
+      </select>
+
+      <label for="renovation-type">리모델링 유형<span style="color:red;">*</span></label>
+      <select id="renovation-type" name="renovation_type" required>
+        <option value="">선택하세요</option>
+        <option value="토탈 올수리">토탈 올수리 (전체)</option>
+        <option value="부분 리모델링 (주방/욕실)">부분 리모델링 (주방/욕실)</option>
+        <option value="부분 리모델링 (확장/샷시)">부분 리모델링 (확장/샷시)</option>
+        <option value="단순 시공 (도배/바닥)">단순 시공 (도배/바닥)</option>
+      </select>
+
+      <label for="timeline">희망 공사 시작 시점</label>
+      <input type="text" id="timeline" name="timeline" placeholder="예: 2026년 3월 예정">
+
+      <label for="special-request">상세 요청 사항 및 문의 내용</label>
+      <textarea id="special-request" name="special_request" rows="5" placeholder="예: 예산 범위, 원하는 디자인 스타일, 짐 보관 여부 등"></textarea>
+
+      <button type="submit" class="btn-cta">견적 문의 보내기</button>
+    </form>
+  </section>
+
+  <section id="external-links">
+    <h2>관련 신뢰성 있는 외부 사이트</h2>
+    <p>보다 정확하고 공인된 정보를 위해 다음 기관의 자료를 참고할 수 있습니다.</p>
+    <ul>
+      <li><a href="https://www.naid.or.kr/" target="_blank">한국실내건축가협회 (KAID)</a>: 국내 인테리어 디자인 분야의 공신력 있는 기관.</li>
+      <li><a href="https://www.suwon.go.kr/web/main/index.do" target="_blank">수원시청 공식 홈페이지</a>: 건축 인허가, 도시계획 등 수원시 관련 행정 정보 제공.</li>
+      <li><a href="https://namu.wiki/w/%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4" target="_blank">나무위키 - 인테리어</a>: 인테리어 분야의 기본 용어 및 개념 정리.</li>
+      <li><a href="http://www.koreatapestry.or.kr/" target="_blank">한국공예디자인문화진흥원</a>: 디자인 관련 정보 및 트렌드 제공.</li>
+      <li><a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=278061&joCmp=B0020002&viewCls=sysSrtPrc" target="_blank">국가법령정보센터 - 주택법</a>: 리모델링 관련 법규 및 규제 확인.</li>
+    </ul>
+  </section>
+
+
+  
